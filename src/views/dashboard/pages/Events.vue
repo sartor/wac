@@ -28,7 +28,6 @@
               >
                 <v-text-field
                   v-model="description"
-                  :rules="nameRules"
                   label="Description"
                 ></v-text-field>
               </v-col>
@@ -111,7 +110,6 @@
       description: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => v.length <= 5 || 'Name must be less than 5 characters',
       ],
       sum: '',
       sumRules: [
@@ -124,7 +122,7 @@
     methods: {
       addEvent () {
         this.$store.commit(
-          'addEvent',
+          'ADD_EVENT',
           {
             name: this.name,
             description: this.description,

@@ -61,7 +61,8 @@ export default new Vuex.Store({
     SET_DRAWER (state, payload) {
       state.drawer = payload
     },
-    ADD_MEMBER: (state, payload) => {
+    ADD_EVENT: (state, payload) => {
+      state.events.unshift(payload)
     },
   },
 
