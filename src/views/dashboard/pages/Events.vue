@@ -5,6 +5,64 @@
     tag="section"
   >
     <v-row>
+      <v-card>
+        <v-form v-model="valid">
+          <v-container>
+            <v-row>
+              <v-col
+                cols="12"
+                md="3"
+              >
+                <v-text-field
+                  v-model="name"
+                  :rules="nameRules"
+                  :counter="5"
+                  label="Name"
+                  required
+                ></v-text-field>
+              </v-col>
+
+              <v-col
+                cols="12"
+                md="3"
+              >
+                <v-text-field
+                  v-model="description"
+                  :rules="nameRules"
+                  label="Description"
+                ></v-text-field>
+              </v-col>
+
+              <v-col
+                cols="12"
+                md="3"
+              >
+                <v-text-field
+                  v-model="sum"
+                  :rules="sumRules"
+                  label="Sum (UAH)"
+                  required
+                ></v-text-field>
+              </v-col>
+
+              <v-col
+                cols="12"
+                md="3"
+              >
+                <v-btn
+                  color="primary"
+                  @click="addEvent"
+                >
+                  Save
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-form>
+      </v-card>
+
+    </v-row>
+    <v-row>
       <v-col cols="3">
         <template>
           <v-card
@@ -20,7 +78,7 @@
                   {{ event.description }}
                 </v-card-subtitle>
                 <v-card-text>
-                  <div>Contribution: {{ event.sum }} {{ event.currency }}</div>
+                  <div>Contribution: {{ event.sum }} UAH</div>
                   <div>Start: {{ event.startAt }}</div>
                   <div>End: {{ event.endAt }}</div>
                 </v-card-text>
@@ -47,8 +105,36 @@
   import { mapState } from 'vuex'
 
   export default {
+    data: () => ({
+      valid: false,
+      name: '',
+      description: '',
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => v.length <= 5 || 'Name must be less than 5 characters',
+      ],
+      sum: '',
+      sumRules: [
+        v => !!v || 'Sum is required',
+      ],
+    }),
     computed: mapState({
       events: 'events',
     }),
+    methods: {
+      addEvent () {
+        this.$store.commit(
+          'addEvent',
+          {
+            name: this.name,
+            description: this.description,
+            sum: this.sum,
+          })
+
+        this.name = null
+        this.description = null
+        this.sum = null
+      },
+    },
   }
 </script>

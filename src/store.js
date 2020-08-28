@@ -41,8 +41,8 @@ export default new Vuex.Store({
         name: 'Topping collection',
         startAt: '2020-09-10',
         endAt: '2020-09-15',
-        currency: 'USD',
-        sum: 5,
+        currency: 'UAH',
+        sum: 50,
         members: [
           {
             name: 'Vegan',
