@@ -30,7 +30,7 @@
         >
           <div class="body-1 font-weight-light pt-6 pt-md-0 text-center">
             <v-icon size="18">
-              Made with crutches for heart.
+              Made with crutches by heart.
             </v-icon>
           </div>
         </v-col>
