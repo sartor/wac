@@ -59,7 +59,6 @@
           </v-container>
         </v-form>
       </v-card>
-
     </v-row>
     <v-row>
       <v-col cols="3">
@@ -81,6 +80,15 @@
                   <div>Start: {{ event.startAt }}</div>
                   <div>End: {{ event.endAt }}</div>
                 </v-card-text>
+              </div>
+              <div>
+                <v-chip
+                  v-for="member in event.members"
+                  :key="member.name"
+                  class="ma-2"
+                >
+                  {{ member.name }}
+                </v-chip>
               </div>
               <div>
                 <v-card-actions>
